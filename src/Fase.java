@@ -2,7 +2,7 @@
 public class Fase {
 	private String nome;
 	private Personagem[] personagens = new Personagem[8];
-	private double[] velocidadePersonagens = new double[8];
+	private int personagemAtual;
 	
 	public Fase(String nome, Inimigo a, Inimigo b, Inimigo c, Inimigo d, Inimigo e, Jogador j)
 	{
@@ -12,15 +12,12 @@ public class Fase {
 		personagens[2] = c;
 		personagens[3] = d;
 		personagens[4] = e;
-		personagens[5]= j.getSeguidoresMissao(0);
-		personagens[6]= j.getSeguidoresMissao(1);
-		personagens[7]= j.getSeguidoresMissao(2);
+		personagens[5]= j.getHerois(0);
+		personagens[6]= j.getHerois(1);
+		personagens[7]= j.getHerois(2);
+		personagemAtual = 5;
 		
 		
-		for(int i=0; i<8; i++)
-		{
-			velocidadePersonagens[i]= personagens[i].getVelocidadeAtaque();
-		}
 	}
 	
 	public boolean estaVivo(int i)
@@ -33,29 +30,16 @@ public class Fase {
 	}
 	
 	public int vezJogador()	{
-		int maiorIndice = 8;
-		double maiorVelocidade =0;
-		for(int i = 0; i<8; i++)
+		while(true)
 		{
-			if(velocidadePersonagens[i] > maiorVelocidade){
-				if(estaVivo(i))
-				{
-					maiorIndice = i;
-					maiorVelocidade = velocidadePersonagens[i];
-				}
-
-			}
+			personagemAtual++;
+			
+			if(personagemAtual > 7)
+				personagemAtual = 1;
+			
+			if(personagens[personagemAtual].getVidaAtual() > 0)
+				return personagemAtual;
 		}
-		if(maiorVelocidade < 1)
-		{
-			for(int i=0; i<8; i++)
-			{
-				velocidadePersonagens[i]+= personagens[i].getVelocidadeAtaque();
-			}
-			return vezJogador();
-		}
-		velocidadePersonagens[maiorIndice] -= 1;
-		return maiorIndice;
 	}
 	
 	public boolean timeInimigoVivo()

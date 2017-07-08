@@ -1,14 +1,11 @@
 package Itens;
 
-public abstract class Armadura {
+public class Armadura {
 
 	private String nome;
 	private String descricao;
 	private int defesa;
-	private int vigor;
-	private int intelecto;
-	private int destresa;
-	private int forca;
+	private int vida;
 	private int nivel;
 	
 	public Armadura(String nome, String descricao, String tipo, int nivel)
@@ -18,26 +15,17 @@ public abstract class Armadura {
 		this.nivel = nivel;
 		switch(tipo)
 		{
-		case("Placas"):
+		case("Pesada"):
 			this.defesa = nivel *5;
-			this.destresa = 0;
-			this.intelecto = 0;
-			this.forca = nivel*2;
-			this.vigor = nivel *3;
+			this.vida = nivel *3;
 
-		case("Malha"):
+		case("Media"):
 			this.defesa = nivel *3;
-			this.destresa = nivel * 4;
-			this.intelecto = 0;
-			this.forca = nivel*1;
-			this.vigor = nivel *2;
+			this.vida = nivel *2;
 	
-		case("Couro"):
+		case("Leve"):
 			this.defesa = nivel *2;
-			this.destresa = nivel * 2;
-			this.intelecto = nivel * 5;
-			this.forca = 0;
-			this.vigor = nivel *1;
+			this.vida = nivel *1;
 			
 		}
 	}
@@ -54,21 +42,10 @@ public abstract class Armadura {
 		return defesa;
 	}
 
-	public int getVigor() {
-		return vigor;
+	public int getVida() {
+		return vida;
 	}
 
-	public int getIntelecto() {
-		return intelecto;
-	}
-
-	public int getDestresa() {
-		return destresa;
-	}
-
-	public int getForca() {
-		return forca;
-	}
 
 	public int getNivel() {
 		return nivel;

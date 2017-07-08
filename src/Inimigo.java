@@ -10,7 +10,6 @@ public class Inimigo extends Personagem{
 		this.nivel = nivel;
 		vidaMaxima = nivel*10;
 		vidaAtual = vidaMaxima;
-		velocidadeAtaque = nivel;
 	}
 
 

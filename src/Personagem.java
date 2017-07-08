@@ -1,12 +1,7 @@
 
 public class Personagem {
 	protected String nome;
-	protected double velocidadeAtaque;
 	protected int vidaAtual;
-	
-	public double getVelocidadeAtaque() {
-		return velocidadeAtaque;
-	}
 	
 	
 	public int getDano()
